@@ -1,8 +1,5 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+import { Box, Modal, Button, TextField } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -33,7 +30,6 @@ export default function ModelComponent({ open, handleClose, data }) {
 
   return (
     <div>
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -42,13 +38,32 @@ export default function ModelComponent({ open, handleClose, data }) {
       >
         <Box sx={{ ...style, width: "70vw" }}>
           <h2 id="parent-modal-title">Update Profile</h2>
-          <TextField id="standard-basic" placeholder="Name" variant="standard" sx={{width: '60%', marginBottom: 3 }} value={name} />
+          <TextField
+            id="standard-basic"
+            placeholder="Name"
+            variant="standard"
+            sx={{ width: "60%", marginBottom: 3 }}
+            value={name}
+          />
           <br />
-          <TextField id="standard-basic" placeholder="Height" variant="standard"  sx={{width: '60%', marginBottom: 3}} />
+          <TextField
+            id="standard-basic"
+            placeholder="Height"
+            variant="standard"
+            sx={{ width: "60%", marginBottom: 3 }}
+            value={height}
+          />
+          <TextField
+            id="standard-basic"
+            placeholder="Mass"
+            variant="standard"
+            sx={{ width: "60%", marginBottom: 3 }}
+            value={mass}
+          />
           <br />
-          <TextField id="standard-basic" placeholder="Mass" variant="standard"  sx={{width: '60%', marginBottom: 3}} />
-          <br />
-          <Button variant="contained" onClick={handleClose}>Save</Button>
+          <Button variant="contained" onClick={handleClose}>
+            Save
+          </Button>
           {/* <ChildModal /> */}
         </Box>
       </Modal>

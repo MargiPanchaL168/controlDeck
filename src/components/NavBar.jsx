@@ -1,30 +1,33 @@
-import React,  {useContext} from "react";
+import React, { useContext } from "react";
 import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
-import BadgeIcon from "@mui/icons-material/Badge";
 import { useNavigate } from "react-router-dom";
-import Switch from "@mui/material/Switch";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import { changeTheme } from "../features/home/homeSlice";
 import { doLogOut } from "../features/auth/authSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ThemeContext } from "../App";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Badge,
+  MenuItem,
+  Menu,
+  Switch,
+  FormGroup,
+  FormControlLabel,
+} from "@mui/material";
+import {
+  Search,
+  AccountCircle,
+  Mail,
+  Notifications,
+  MoreVert
+} from "@mui/icons-material";
+import BadgeIcon from "@mui/icons-material/Badge";
 
-const Search = styled("div")(({ theme }) => ({
+const SearchComp = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -91,7 +94,6 @@ export default function NavBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  // const theme = useSelector((state) => state.home.theme);
   const dispatch = useDispatch();
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -152,7 +154,7 @@ export default function NavBar() {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
-            <MailIcon />
+            <Mail />
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -164,7 +166,7 @@ export default function NavBar() {
           color="inherit"
         >
           <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+            <Notifications />
           </Badge>
         </IconButton>
         <p>Notifications</p>
@@ -183,7 +185,6 @@ export default function NavBar() {
       </MenuItem>
     </Menu>
   );
-  const label = { inputProps: { "aria-label": "Color switch demo" } };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ bgcolor: "rgb(37, 150, 190)" }}>
@@ -207,22 +208,17 @@ export default function NavBar() {
             <strong>Control Deck</strong>
             {/*  */}
           </Typography>
-          <Search>
+          <SearchComp>
             <SearchIconWrapper>
-              <SearchIcon />
+              <Search />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
-          </Search>
+          </SearchComp>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {/* <Switch
-              checked={isDarkMode}
-              onChange={() => setIsDarkMode(!isDarkMode)}
-              inputProps={{ "aria-label": "controlled" }}
-            /> */}
             <FormGroup>
               <FormControlLabel
                 control={
@@ -230,7 +226,6 @@ export default function NavBar() {
                     checked={theme}
                     onChange={() => {
                       toggleTheme();
-                      // dispatch(changeTheme(!isDarkMode));
                       setIsDarkMode(!isDarkMode);
                     }}
                     inputProps={{ "aria-label": "controlled" }}
@@ -245,7 +240,7 @@ export default function NavBar() {
               color="inherit"
             >
               <Badge badgeContent={4} color="error">
-                <MailIcon />
+                <Mail />
               </Badge>
             </IconButton>
             <IconButton
@@ -254,7 +249,7 @@ export default function NavBar() {
               color="inherit"
             >
               <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
+                <Notifications />
               </Badge>
             </IconButton>
             <IconButton
@@ -278,7 +273,7 @@ export default function NavBar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MoreIcon />
+              <MoreVert />
             </IconButton>
           </Box>
         </Toolbar>

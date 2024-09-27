@@ -1,11 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, Fragment } from "react";
 import NavBar from "../components/NavBar";
-import Box from "@mui/material/Box";
-import {Typography, Grid2} from "@mui/material";
+import {Grid2, CircularProgress, Box} from "@mui/material";
 import { ThemeContext } from "../App";
 import CardComponent from "../components/Card";
 import axios from 'axios';
-import CircularProgress from '@mui/material/CircularProgress';
 
 function Home() {
   const { theme } = useContext(ThemeContext);
@@ -24,16 +22,16 @@ function Home() {
       .finally(function () {
         setLoader(false);
       });
-  }, []);
+  }, [peopleData]);
   return (
-    <>
+    <Fragment>
       <NavBar />
       <Box
         sx={{
           display: "flex",
           backgroundColor: theme ? "black" : "white",
           color: theme ? "white" : "black",
-          height: "100%",
+          height: "100vh",
         }}
       >
         {loader ?  <CircularProgress /> : 
@@ -48,7 +46,7 @@ function Home() {
         }
        
       </Box>
-    </>
+    </Fragment>
   );
 }
 

@@ -1,11 +1,11 @@
 import { createContext } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { changeTheme } from "./features/home/homeSlice";
+import { useSelector, useDispatch } from "react-redux";
 import Settings from "./Pages/Settings";
 import Home from "./Pages/Home";
 import AboutUs from "./Pages/About";
 import Login from "./Authentication/Login";
-import { changeTheme } from "./features/home/homeSlice";
-import { useSelector, useDispatch } from "react-redux";
 import ProtectedRoute from "./ProtectedRoute";
 
 export const ThemeContext = createContext();
