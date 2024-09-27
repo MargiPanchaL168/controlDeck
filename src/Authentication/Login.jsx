@@ -55,10 +55,9 @@ export default function Login() {
             <Button
               variant="contained"
               sx={{ color: "#dce4fc" }}
-              onClick={async () => {
-                await dispatch(doLogin());
+              onClick={() => {
+                dispatch(doLogin());
                 console.log("isLogin",isLogin);
-                // isLogin
                 navigate("/home");
               }}
             >

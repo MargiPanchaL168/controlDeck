@@ -28,6 +28,12 @@
   color: #61dafb;
 }
 
+.CardComp {
+  display: grid,
+    /* gridTemplateColumns: repeat(auto-fill, 220px), //the width of the card  */
+  /* justifyContent: center,
+  gridGap: "20px", */
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
