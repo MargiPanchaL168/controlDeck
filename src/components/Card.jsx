@@ -6,9 +6,18 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import Button from '@mui/material/Button';
 import CardActions from '@mui/material/CardActions';
+import ModelComponent from './Model';
 
 
 export default function CardComponent({data = {}}) {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
     console.log({"CardComponent":"",data});
     const {name = "Default", height, mass, skin_color, eye_color, films, birth_year, url} = data;
   return (
@@ -32,10 +41,11 @@ export default function CardComponent({data = {}}) {
       </CardContent>
     </CardActionArea>
     <CardActions>
-      <Button size="small" color="primary">
+      <Button size="small" color="primary" onClick={handleOpen}>
         Edit Profile
       </Button>
     </CardActions>
+    {open ? <ModelComponent open={open} handleClose={handleClose} data={data} /> : null}
   </Card>
   );
 }
