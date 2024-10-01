@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import AboutUs from "./Pages/About";
 import Login from "./Authentication/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import './App.css';
 
 export const ThemeContext = createContext();
 

@@ -15,7 +15,22 @@ const style = {
   pb: 3,
 };
 
-export default function ModelComponent({ open, handleClose, data }) {
+interface PeopleData {
+  name: 'string',
+  height:'string',
+  mass: 'string',
+  skin_color: 'string',
+  eye_color: 'string',
+  birth_year: 'string'
+}
+
+interface ModelProps {
+  open: boolean | any,
+  handleClose: any,
+  data: PeopleData
+}
+
+const ModelComponent: React.FC<ModelProps> = ({ open, handleClose, data }): React.ReactElement => {
   console.log({ ModelComponent: "", data });
   const {
     name = "Default",
@@ -23,9 +38,7 @@ export default function ModelComponent({ open, handleClose, data }) {
     mass,
     skin_color,
     eye_color,
-    films,
     birth_year,
-    url,
   } = data;
 
   return (
@@ -70,3 +83,5 @@ export default function ModelComponent({ open, handleClose, data }) {
     </div>
   );
 }
+
+export default ModelComponent

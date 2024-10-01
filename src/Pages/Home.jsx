@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect, Fragment } from "react";
 import NavBar from "../components/NavBar";
-import {Grid2, CircularProgress, Box} from "@mui/material";
+import { Grid2, CircularProgress, Box } from "@mui/material";
 import { ThemeContext } from "../App";
 import CardComponent from "../components/Card";
-import axios from 'axios';
+import axios from "axios";
 
 function Home() {
   const { theme } = useContext(ThemeContext);
@@ -29,22 +29,27 @@ function Home() {
       <Box
         sx={{
           display: "flex",
-          backgroundColor: theme ? "black" : "white",
-          color: theme ? "white" : "black",
+          backgroundColor: theme !== 'light' ? "black" : "white",
+          color: theme !== 'light' ? "white" : "black",
           height: "100vh",
+          overflowY: "auto",
+          WebkitOverflowScrolling: "touch",
+          justifyContent:"center",
+          alignItems: "center"
+          // backgroundColor: 'red'
         }}
       >
-        {loader ?  <CircularProgress /> : 
-        ( <Grid2 container >
-          {peopleData?.map((p, index) => (
-            <Grid2 item key={index}>
-              <CardComponent data={p} />
-            </Grid2>
-            
+        {loader ? (
+          <CircularProgress />
+        ) : (
+          <Grid2 container sx={{backgroundColor: 'pink', height: '100%', width: '70%', alignSelf: 'center', borderWidth: '2px', borderColor: 'yellow'}}>
+            {peopleData?.map((p, index) => (
+              <Box item key={index}>
+                <CardComponent data={p} />
+              </Box>
             ))}
-          </Grid2>)
-        }
-       
+          </Grid2>
+        )}
       </Box>
     </Fragment>
   );
